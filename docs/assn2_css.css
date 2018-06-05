@@ -1,0 +1,89 @@
+* {
+	box-sizing: border-box;
+	margin: 0px;
+}
+
+body {
+	padding: 20px 0px 0px 0px;
+}
+
+h1 {
+	text-align: center;
+	height: 70px;
+	font-size: 3em;
+}
+
+#div1 {
+	background-color: pink;
+}
+
+#div2 {
+	background-color: red;
+	color: white; 
+}
+
+#div3 {
+	background-color: yellow;
+}
+
+p {
+	position: absolute;
+	top: 60px;
+	padding: 0px 10px 10px 0px;
+	max-height: 240px;
+	overflow: hidden;
+}
+
+h2 {
+	width: 33%;
+	border: 1px solid black;
+	position: absolute;
+	top:0px;
+	right:0px;
+	text-align: center;
+	padding:5px 0px 5px 0px;
+	font-size: 2em;
+}
+
+div {
+	background-color: gray;
+	float: left;
+	padding: 0px 10px 10px 10px;
+	margin-top: 50px;
+	position: relative;
+	border: 1px solid black;
+	min-height: 300px;
+}
+
+@media (min-width: 991px) {
+	div {
+		width: 28%;
+		margin-left: 4%;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	div {
+		width: 44%;
+		margin-left: 4%;
+		margin-bottom: 0px;
+	}
+
+	div:last-child {
+		width: 92%;
+		margin: 4%;
+		clear: left;
+	}
+} 
+
+@media (min-width: 0px) and (max-width: 767px) {
+	div {
+		width: 90%;
+		margin-top: 5%;
+		margin-left: 5%;
+	}
+
+	div:last-child {
+		margin-bottom: 5%;
+	}
+}
