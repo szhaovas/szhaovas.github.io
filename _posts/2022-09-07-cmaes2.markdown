@@ -72,5 +72,3 @@ After normalizing this function to sum to 1, the y-axis shows the weight and x-a
 Since CMA-ES knows the population size, it can compute the weights at the beginning and store them in a list to be reused each iteration -- simply sort the population by fitness, then multiply the first(best) $y_k$ by the first(largest) weight, the second $y_k$ by the second weight, etc.. Optionally, we can even weigh low-fitness $y_k$ by negative weights to discourage reproducing those steps, but the maths get a bit tricky, so I'll stick to assigning low-fitness $y_k$ very small (but still positive) weights.
 
 That's it for the recombination section! With the sampling and recombination explained, we only have step size and covariance matrix adaptation sections to cover. Stay tuned for part 3!
-
-testtest
