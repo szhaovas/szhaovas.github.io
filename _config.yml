@@ -55,3 +55,5 @@ plugins:
 
 google_search_console:
   verification_file_code: 8ab8a018162b0ccd
+
+google_analytics: "UA-240211210-1"
