@@ -30,6 +30,7 @@ remote_theme: szhaovas/beautiful-jekyll
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
+  - jekyll-google_search_console_verification_file
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -51,22 +52,5 @@ plugins:
 #   - vendor/gems/
 #   - vendor/ruby/
 
-scholar:
-  style: apa
-  locale: en
-
-  sort_by: none
-  order: ascending
-
-  source: ./_bibliography
-  bibliography: references.bib
-  bibliography_template: "{{reference}}"
-
-  replace_strings: true
-  join_strings:    true
-
-  details_dir:    bibliography
-  details_layout: bibtex.html
-  details_link:   Details
-
-  query: "@*"
+google_search_console:
+  verification_file_code: 8ab8a018162b0ccd
