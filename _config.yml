@@ -53,3 +53,4 @@ plugins:
 #   - vendor/ruby/
 
 google_analytics: "UA-240211210-1"
+gtag: "UA-240211210-1"
