@@ -36,6 +36,4 @@ gem "webrick", "~> 1.7"
 
 gem "jekyll-remote-theme"
 
-gem "jekyll-google_search_console_verification_file", "~> 1.1", :group => :jekyll_plugins
-
 gem "jekyll-sitemap"
