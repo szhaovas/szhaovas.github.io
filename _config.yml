@@ -29,7 +29,6 @@ social-network-links:
 remote_theme: szhaovas/beautiful-jekyll
 plugins:
   - jekyll-remote-theme
-  - jekyll-google_search_console_verification_file
   - jekyll-sitemap
 
 # Exclude from processing.

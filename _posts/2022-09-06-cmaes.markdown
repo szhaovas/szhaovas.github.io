@@ -1,10 +1,9 @@
 ---
 layout: post
-title:  "CMA-ES Maths and Intuitions (Part 1)"
+title:  Simple Evolution Strategy and Covariance Matrix Adaptation (CMA-ES part 1)
 date:   2022-09-06 20:18:51 +0800
 categories: jekyll update
 ---
-Scripts used in this blog can be found at [this repo](https://github.com/szhaovas/blog-ytb/tree/master/CMA-ES). I also have a (badly recorded) series on [Youtube](https://www.youtube.com/watch?v=5qCAOyNJROg&list=PL8MOj3TVQozmIyx-jUTIrtQxr1bO3rjk-) that covers the content in this series.
 
 Hi! This blog series is intended as an intuitive explanation on Covariance Matrix Adaptation Evolution Strategy(<b>CMA-ES</b>) algorithm. I'm planning to divide the series into three parts. Part 1 skims over some background knowledge about Evolution Strategy(<b>ES</b>) in general. I used [the otoro tutorial](https://blog.otoro.net/2017/10/29/visual-evolution-strategies/) as a base when making part 1, so if you are already familiar with its content, you can skip to part 2.
 
@@ -54,5 +53,7 @@ Here we can observe that, although the simple technique initially stretches the 
 
 # An interesting perspective on the role played by covariance matrix
 If we go by the representation of normal distribution as an ellipse of equal probability density, then it's not hard to observe that more individuals sampled from this distribution tend to lie somewhere near the long axis of the ellipse, especially if the ellipse is thin. Therefore, the average of elites, which determines the new mean, is also likely going to lie somewhere along the long axis. Moreover, if the ellipse has large radii, the sampled individuals are likely going to lie further away from the current mean, so the new mean is also likely to lie further away. Therefore, the direction and radii of the distribution ellipse is indicative of the direction and length of the update on mean. Following this intuition, we can almost say that the covariance matrix controls the exploration direction and step size of the optimizer centroid! ("almost", because everything is probabilistic here) I found this visualization easier to understand than raw numbers.
+
+Scripts used in this blog can be found at [this repo](https://github.com/szhaovas/blog-ytb/tree/master/CMA-ES). I also have a (badly recorded) series on [Youtube](https://www.youtube.com/watch?v=5qCAOyNJROg&list=PL8MOj3TVQozmIyx-jUTIrtQxr1bO3rjk-) that covers the content in this series.
 
 Stay tuned for part 2!
