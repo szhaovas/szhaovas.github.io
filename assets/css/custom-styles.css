@@ -1,0 +1,41 @@
+body {
+  background: linear-gradient(0deg, rgba(195, 171, 97, 0.9), rgba(195, 171, 97, 0.9)), url(/assets/images/scene.png) no-repeat center center fixed;
+}
+
+.navbar-custom {
+  border-bottom: 1px solid rgba(48, 48, 48, 1);
+}
+
+.post-preview {
+  border-bottom: 1px solid rgba(48, 48, 48, 1);
+}
+
+footer {
+  border-top: 1px solid rgba(48, 48, 48, 1);
+}
+
+footer p.text-muted {
+  color: rgba(48, 48, 48, 1) !important;
+}
+
+.pagination .page-item .page-link {
+  border-color: rgba(140, 113, 9, 1);
+  background-color: rgba(140, 113, 9, 0.7);
+}
+
+.pagination .page-item .page-link:hover {
+  border-color: rgba(140, 113, 9, 0.9);
+  background-color: rgba(140, 113, 9, 0.9);
+}
+
+.post-preview .post-meta, .post-heading .post-meta {
+  color: rgba(48, 48, 48, 1);
+}
+
+.blog-post blockquote {
+    border-left: 0.3125rem solid rgba(48, 48, 48, 1);
+}
+
+code {
+    background-color: rgba(140, 113, 9, 1);
+}

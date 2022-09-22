@@ -7,12 +7,12 @@ categories: jekyll update
 
 Welcome back! Part 2 & 3 will go over the `pseudocode` from [The CMA Evolution Strategy: A Tutorial](https://arxiv.org/pdf/1604.00772) page 29. I try to stay on the intuition level and focus on the <b>motivations</b> behind each line. Rest assured! I will not dive too deep into the exact mathematical derivations. Here's the pseudocode again. I'll refer to this as the "real CMA-ES" for the rest of this series.
 
-![]({{site.url}}/assets/images/cmaes_pseudocode_sample.png)
+![]({{site.url}}/assets/images/cmaes/cmaes_pseudocode_sample.png)
 *pseudocode from The CMA Evolution Strategy: A Tutorial*
 
 If you compare it against our simple ES pseudocode from [part 1]({{site.url}}/jekyll/update/2022/09/06/cmaes.html). The general flows actually have a lot in common. In both pseudocodes, the main loop begins with a section for sampling individuals for the new generation. Let's see what changes the real CMA-ES makes for the sampling section and why they improve the algorithm.
 
-![]({{site.url}}/assets/images/simple_cmaes_pseudocode_sample.png)
+![]({{site.url}}/assets/images/cmaes/simple_cmaes_pseudocode_sample.png)
 *pseudocode: ES with simple covariance matrix adaptation*
 
 # What's new about sampling?
@@ -54,17 +54,17 @@ With the de-coupling of $\sigma$ and $C$ explained, we are left with one questio
 # Recombination: updating the mean $m$
 The next section of the real CMA-ES updates the mean of the distribution, similar to line 8 from our simple ES. There are just two minor differences.
 
-![]({{site.url}}/assets/images/cmaes_pseudocode_recombination.png)
+![]({{site.url}}/assets/images/cmaes/cmaes_pseudocode_recombination.png)
 *pseudocode from The CMA Evolution Strategy: A Tutorial*
 
-![]({{site.url}}/assets/images/simple_cmaes_pseudocode_recombination.png)
+![]({{site.url}}/assets/images/cmaes/simple_cmaes_pseudocode_recombination.png)
 *pseudocode: ES with simple covariance matrix adaptation*
 
 Firstly, instead of averaging the individuals $x_k \sim \sigma N(m, C) \sim N(m, \Sigma)$ and <b>replacing</b> the old mean with the new, real CMA-ES averages $y_k \sim N(0, C)$, and <b>updates</b> the old mean with the displacement. $c_m$ is the "learning rate" of mean and is a hyperparameter; we can set it to some number within $[0,1]$ to discount the update (if we want to be cautious). I think the mean update from our simple ES would have been just as fine, and the change is purely notational.
 
 Secondly, instead of only considering the <b>elites</b> when averaging, real CMA-ES does a weighted average over <b>all</b> members of the population. Obviously, higher-fitness members are given more weights, so we can use any power-law distribution to get the weights. The real CMA-ES pseudocode uses the function shown below.
 
-![]({{site.url}}/assets/images/cmaes_weights.gif)
+![]({{site.url}}/assets/images/cmaes/cmaes_weights.gif)
 *power-law function used by CMA-ES; $N$ is population size*
 
 After normalizing this function to sum to 1, the y-axis shows the weight and x-axis the fitness rank. You may also observe that the function decays slower for larger population $N$, so there are more positive weights to assign.

@@ -31,6 +31,18 @@ plugins:
   - jekyll-remote-theme
   - jekyll-sitemap
 
+# Theme
+avatar: "/assets/images/avatar.png"
+round-avatar: true
+navbar-col: "#8C7109"
+# page-img: "/assets/images/scene_alpha.png"
+footer-col: "#8C7109"
+footer-link-col: "#704917"
+footer-hover-col: "#A67432"
+hover-col: "#707070"
+
+site-css:
+  - "/assets/css/custom-styles.css"
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

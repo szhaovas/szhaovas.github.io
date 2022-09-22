@@ -7,14 +7,14 @@ categories: jekyll update
 
 Welcome back! Previously in [part 2]({{site.url}}/jekyll/update/2022/09/07/cmaes2.html) we looked at why and how CMA-ES de-coupled step size $\sigma$ and direction $C$. Here in part 3 we will discuss the mechanisms by which each is adapted independently.
 
-![]({{site.url}}/assets/images/cmaes_pseudocode_stepsize.png)
+![]({{site.url}}/assets/images/cmaes/cmaes_pseudocode_stepsize.png)
 *pseudocode from The CMA Evolution Strategy: A Tutorial*
 
 # Adapting step size $\sigma$
 ## What can we learn from evolution path $p_{\sigma}$?
 We saw in [part 2]({{site.url}}/jekyll/update/2022/09/07/cmaes2.html) how the mean $m$ of the distribution was iteratively updated according to the weighted average of individuals, which were in turn sampled from a distribution centered around the previous mean. Let's consider an evolution path consisted of all means seen so far, $m_0, m_1, \ldots, m_g$, and the overall update $m_0 \to m_g$, and let's think about what the length of the overall update, $\lVert m_0 \to m_g \rVert$, tells us about the step size we've been using. Below shows 3 scenarios:
 
-![]({{site.url}}/assets/images/stepsize.png)
+![]({{site.url}}/assets/images/cmaes/stepsize.png)
 *How $m$ has been updating: 3 scenarios*
 
 As shown on the left, if $\lVert m_0 \to m_g \rVert$ is small, it's probably indication that the directions of past updates $m_0 \to m_1, m_1 \to m_2, \ldots$ don't agree, and we've just been jumping back and forth around the optimum. This is the scenario where we'd want to decrease step size and let the algorithm converge. On the contrary, if $\lVert m_0 \to m_g \rVert$ is big as shown on the right, it's probably indication that the past updates align in direction. In this case we'd want to increase step size because we know the direction is a good and larger updates mean faster optimization!
@@ -47,7 +47,7 @@ $\mu_{eff}$ is defined as the ratio between the L1-norm squared and L2-norm of r
 # Adapting direction $C$
 That leaves us with just one more section to explain! In [part 2]({{site.url}}/jekyll/update/2022/09/07/cmaes2.html) I mentioned that update step size $\sigma$ and direction $C$ would be updated differently. We just saw how to update $\sigma$; now let's look at how $C$ updates and how is the mechanism different.
 
-![]({{site.url}}/assets/images/cmaes_pseudocode_direction.png)
+![]({{site.url}}/assets/images/cmaes/cmaes_pseudocode_direction.png)
 *pseudocode from The CMA Evolution Strategy: A Tutorial*
 
 If we look at the overall update formula <b>(47)</b>, we can see $C$ is updated in a weighted-average-matter among the old $C$, the $p_cp_c^T$ term, and the $\Sigma_{i=1}^{\lambda}w_iy_iy_i^T$ term. So the update really consists of two parts: the $p_cp_c^T$ term is referred to as the <b>rank-one update</b>, whereas the $\Sigma_{i=1}^{\lambda}w_iy_iy_i^T$ term is referred to as the <b>rank-$\mu$ update</b>.
@@ -62,7 +62,7 @@ It's not that important for our understanding of CMA-ES, so I'll just hint that,
 ## Rank-one update
 When calculating the rank-$\mu$ update, we use the outer product of $y$ with itself $yy^T$, but in doing so, we lose the sign information because $yy^T = (-y)(-y^T)$. The significance of this information loss is shown in the example below:
 
-![]({{site.url}}/assets/images/sign_info_loss.png)
+![]({{site.url}}/assets/images/cmaes/sign_info_loss.png)
 *Sign information loss; Image from [Hansen, N., & Ostermeier, A. (2001)](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.13.7462&rep=rep1&type=pdf)*
 
 Both examples show four consecutive mean updates. In the left example, the updates are $v, w, v, w$, whereas the updates in the right example are $v, -w, v, -w$, with the second and fourth updates having negated signs. Since the updates are different in the two examples, we'd expect the resulting covariance matrix to be different as well, potentially with the left example ending up with a distribution biased along the vertical direction ("narrow-shaped" ellipse), and the right with one biased along the horizontal direction ("flat-shaped" ellipse). But because $ww^T = (-w)(-w)^T$, the sign difference isn't reflected in the covariance updates and both update sequences end up with the same covariance matrix.
@@ -72,7 +72,7 @@ In order to protect this kind of sign information, CMA-ES uses evolution path (a
 # Does CMA-ES work?
 See for yourself! Below shows the complete CMA-ES (from [pycma](https://github.com/CMA-ES/pycma)) being applied on the same problem we attemped with simple-ES in [part 1]({{site.url}}/jekyll/update/2022/09/06/cmaes.html). (You can run the script `cmaes_demo.py` from [repo](https://github.com/szhaovas/blog-ytb/tree/master/CMA-ES) if you want to play around)
 
-![]({{site.url}}/assets/images/cmaes_visual.gif)
+![]({{site.url}}/assets/images/cmaes/cmaes_visual.gif)
 *visualization of complete CMA-ES*
 
 Scripts used in this blog can be found at [this repo](https://github.com/szhaovas/blog-ytb/tree/master/CMA-ES). I also have a (badly recorded) series on [Youtube](https://www.youtube.com/watch?v=5qCAOyNJROg&list=PL8MOj3TVQozmIyx-jUTIrtQxr1bO3rjk-) that covers the content in this series.
