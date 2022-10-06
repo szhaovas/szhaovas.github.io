@@ -84,4 +84,4 @@ Conveniently, [QDgym](https://github.com/ollenilsson19/QDgym) already defines a 
 ![]({{site.url}}/assets/images/me/ant.png)
 *QDgym Ant*
 
-The codes can be found [here](https://github.com/szhaovas/blog-ytb/tree/master/MAP-Elites/P3_PrioritySampling). Install QDgym and run `agent.py` to evolve a controller for QDgym Ant. I plan to go over the codes later in a video.
+The codes can be found [here](https://github.com/szhaovas/blog-ytb/tree/master/MAP-Elites/P2_Parallel%26Save). Install QDgym and run `agent.py` to evolve a controller for QDgym Ant. I plan to go over the codes later in a video.
