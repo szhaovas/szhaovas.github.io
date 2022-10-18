@@ -5,7 +5,7 @@ date:   2022-09-06 20:18:51 +0800
 categories: jekyll update
 ---
 
-Hi! This blog series is intended as an intuitive explanation on Covariance Matrix Adaptation Evolution Strategy(<b>CMA-ES</b>) algorithm. I'm planning to divide the series into three parts. Part 1 skims over some background knowledge about Evolution Strategy(<b>ES</b>) in general. I used [the otoro tutorial](https://blog.otoro.net/2017/10/29/visual-evolution-strategies/) as a base when making part 1, so if you are already familiar with its content, you can skip to [part 2]({{site.url}}/jekyll/update/2022/09/07/cmaes2.html).
+Hi there! This blog series is intended as an intuitive explanation on Covariance Matrix Adaptation Evolution Strategy(<b>CMA-ES</b>) algorithm. I'm planning to divide the series into three parts. Part 1 skims over some background knowledge about Evolution Strategy(<b>ES</b>) in general. I used [the otoro tutorial](https://blog.otoro.net/2017/10/29/visual-evolution-strategies/) as a base when making part 1, so if you are already familiar with its content, you can skip to [part 2]({{site.url}}/jekyll/update/2022/09/07/cmaes2.html).
 
 part 2 & 3 will focus on the `pseudocode` from [The CMA Evolution Strategy: A Tutorial](https://arxiv.org/pdf/1604.00772) page 29. If you have finished [the otoro tutorial](https://blog.otoro.net/2017/10/29/visual-evolution-strategies/) but then found the actual CMA-ES a little overwhelming (as I did), then you are at the right place!
 

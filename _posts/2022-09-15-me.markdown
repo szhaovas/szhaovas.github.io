@@ -5,7 +5,7 @@ date:   2022-09-15 16:31:05 +0800
 categories: jekyll update
 ---
 
-Hi! This blog post aims to be a gentle introduction to MAP-Elites algorithm. We'll look at how MAP-Elites works, what motivated its development, why it might be a promising direction of research, and we'll end with a demo where we implement a simple MAP-Elites and apply it on the QDgym `Ant` environment.
+Hi there! This blog post aims to be a gentle introduction to MAP-Elites algorithm. We'll look at how MAP-Elites works, what motivated its development, why it might be a promising direction of research, and we'll end with a demo where we implement a simple MAP-Elites and apply it on the QDgym `Ant` environment.
 
 This blog post assumes some degree of familiarity with evolutionary algorithms, so I recommend checking out [my blog post on simple ES]({{site.url}}/jekyll/update/2022/09/06/cmaes.html). You don't need to go over the entire blog; just make sure you understand the following:
 - Fundamentally, ES works by generating individuals and updating the generator in a way that relies more on high-fitness individuals, such that the generator is more likely to produce higher-fitness individuals next time.
@@ -81,7 +81,12 @@ MAP-Elites can also be applied for purposes other than optimization. The elite s
 # Evolving a controller for Ant robot
 Conveniently, [QDgym](https://github.com/ollenilsson19/QDgym) already defines a gym environment that's similar to mujoco Ant and returns behavior descriptor needed for MAP-Elites, so we'll use that for the demo. Just like the mujoco Ant, QDgym Ant is a spider-like robot that has 4 legs each driven by 2 positional joints, making 8 inputs each in range [-1,1]. Input 1 bends the joint towards its maximum angle (I'm not entirely sure but I think it's PID-controlled). Reward (fitness) is given according to how far the robot has travelled along the x-axis, as well as a range of minor factors such as joint swing, remaining upright etc.. The behavior decriptor used in QDgym is a 4-vector specifying proportions of time each leg touches the ground (you may try to define your own behavior descriptor if you are familiar enough with the PyBullet simulator).
 
-![]({{site.url}}/assets/images/me/ant.png)
-*QDgym Ant*
-
 The codes can be found [here](https://github.com/szhaovas/blog-ytb/tree/master/MAP-Elites/P2_Parallel%26Save). Install QDgym and run `agent.py` to evolve a controller for QDgym Ant. I plan to go over the codes later in a video.
+
+On my 2017 Macbook Pro with no GPU acceleration, running 10000 generations took about 20 minutes, and below I show the highest fitness "gait" as well as a partial archive visualizing only the first two dimensions (behavior descriptor is 4D in this case). Ok...not exactly convincing performance, but I've made modifications since then, and the result with [CMA-ME]({{site.url}}/jekyll/update/2022/10/10/cmame.html) looks much better!
+
+![]({{site.url}}/assets/images/me/me_10000.gif)
+*QDAnt best gait after 10000 generates of MAP-Elites*
+
+![]({{site.url}}/assets/images/me/me_10000.png)
+*QDAnt partial archive after 10000 generates of MAP-Elites*
