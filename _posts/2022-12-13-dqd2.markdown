@@ -34,7 +34,7 @@ $
 $\pi(s) = a$ is the current policy(NN), $t$ is the current timestep, $r_j$ is the immediate reward at timestep $j$ (after $t$), and $\gamma$ is the reward discount. So in layman terms, this formula defines $Q(s,a)$ as <b>the total sum of rewards we expect to get after executing action $a$ at state $s$ at timestep $t$, if we determine all following actions according to the policy $\pi$</b>. The discount factor $\gamma$ is there because intuitively, we are less certain about whether or not we can receive a reward far into the future, since anything can happen between the current and future timesteps.
 
 ### DQN
-Ok, so we have named and defined this action evaluator $Q(s,a)$, but how do we obtain it? This is where temperal difference(TD) learning comes in. To begin, let's first rewrite the aforementioned $Q(s,a)$ definition into bootstrapped form:
+Ok, so we have named and defined this action evaluator $Q(s,a)$, but how do we obtain it? This is where temporal difference(TD) learning comes in. To begin, let's first rewrite the aforementioned $Q(s,a)$ definition into bootstrapped form:
 
 $$
 \begin{align*}
