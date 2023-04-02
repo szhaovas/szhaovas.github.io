@@ -33,7 +33,7 @@ $
 \|c_0\|Fitness + \Sigma_{j=1}^{k+1} c_j BD_{j-1} = \|c_0\|Fitness + c_1BD_0 + c_2BD_1 \ldots + c_{k+1}BD_k
 $
 
-$c_0$ is introduced to allow the gradient search to choose how much it cares about fitness relative to BD exploration. But since we never want to search for low fitness, $\|c_0\|$ is kept positive. Taking the gradient of this weighted sum w.r.t. genome gives us:
+$c_0$ is introduced to allow the gradient search to choose how much it cares about fitness relative to BD exploration. But since we never want to search for low fitness, $\|c_0\|$ is kept positive. (<span style="color:red">Edit: I later learned this was actually false, because in the paper c0 was indeed NOT kept positive with absolute value. I think this was because the optimizing pressure on fitness was already being applied through the cell replacement procedure in MAP-Elites, so adding extra pressure through forcing c0 to be positive would have been redundant. Additionally, since absolute value would essentially reverse the sign, it would also break the continuity in QD space.</span>) Taking the gradient of this weighted sum w.r.t. genome gives us:
 
 $
 \|c_0\|\nabla_{\theta}Fitness + \Sigma_{j=1}^{k+1} c_j \nabla_{\theta}BD_{j-1}
