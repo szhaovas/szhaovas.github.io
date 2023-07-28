@@ -1,5 +1,8 @@
 body {
-  background: linear-gradient(0deg, rgba(195, 171, 97, 0.9), rgba(195, 171, 97, 0.9)), url(/assets/images/scene.png) no-repeat center center fixed;
+  background-image: linear-gradient(0deg, rgba(195, 171, 97, 0.9), rgba(195, 171, 97, 0.9)), url(/assets/images/scene.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .navbar-custom {
